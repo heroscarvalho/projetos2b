@@ -1,26 +1,29 @@
 package tasks;
-
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-import appobject.LoginAppObject;
-
-public class LoginTask {
-	private LoginAppObject loginAppObject;
+import appobject.CadastroAppObject;
+public class CadastroTask {
+	private CadastroAppObject cadastroAppObject;
 	
-	public LoginTask(WebDriver driver) {
-		this.loginAppObject = new LoginAppObject(driver);	
+	public CadastroTask(WebDriver driver) {
+		this.cadastroAppObject = new CadastroAppObject(driver);
 	}
 	
-	public void PreencherLogin(String cnpj, String codigodeacesso) {
-		this.loginAppObject.getCNPJTextField().sendKeys(cnpj);
-		this.loginAppObject.getCodigoDeAcessoTextField().sendKeys(codigodeacesso);
-		this.loginAppObject.getCaixaDeSegurançaTextField().click();
+	public void preencherCadastro(String nome, String codacesso) {
+		this.cadastroAppObject.getCNPJTextField().sendKeys(nome);
+		this.cadastroAppObject.getCodigoAcessoTextField().sendKeys(codacesso);
+	
+	}
+	
+	public void Captcha() {
+		this.cadastroAppObject.getCaptcha().click();	
 		
 	}
 	
-	public void logar() {
-		this.loginAppObject.getAcessarButton().click();
-		
+	public void enviarFormulario() {
+		this.cadastroAppObject.getCadastrarButton().click();
+			
 	}
-	
+
 }
